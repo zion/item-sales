@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "ember-power-calendar";
+
+input {
+  border: thin solid black;
+}
+
+button.button {
+  background-color: darkolivegreen;
+  color: white;
+  padding: 8px;
+}
