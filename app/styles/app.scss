@@ -13,3 +13,16 @@ button.button {
   color: white;
   padding: 8px;
 }
+
+table {
+  tr {
+    th {
+      font-weight: bold;
+      background: lightgray;
+      border: solid thin black;
+    }
+    td {
+      border: solid thin black;
+    }
+  }
+}
