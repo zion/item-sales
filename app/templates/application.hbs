@@ -1,7 +1,15 @@
-{{page-title "ItemSales"}}
+{{page-title "Item Sales"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<nav class="flex flex-row space-x-4 py-4">
+  <ul>
+    <li class="inline">
+      <LinkTo @route="items.index" class="p-4">Items</LinkTo>
+    </li>
+    <li class="inline">
+      <LinkTo @route="sales.index" class="p-4">Sales</LinkTo>
+    </li>
+  </ul>
+</nav>
+<section class="p-6">
+  {{outlet}}
+</section>
