@@ -5,4 +5,7 @@ export default Factory.extend({
   description() {
     return faker.commerce.productName();
   },
+  afterCreate(item, server) {
+    server.createList('daily-item-sale', 5, { item: item });
+  },
 });

@@ -12,4 +12,7 @@ Router.map(function () {
     this.route('edit', { path: '/:id/edit' });
     this.route('view', { path: '/:id' });
   });
+  this.route('sales', function () {
+    this.route('create');
+  });
 });
