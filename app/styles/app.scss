@@ -8,10 +8,19 @@ input {
   border: thin solid black;
 }
 
-button.button {
+button.button,
+a.button {
+  @apply w-32;
+  text-align: center;
   background-color: darkolivegreen;
   color: white;
   padding: 8px;
+  &.delete {
+    background-color: darkred;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 table {
@@ -24,5 +33,11 @@ table {
     td {
       border: solid thin black;
     }
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: underline;
   }
 }

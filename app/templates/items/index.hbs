@@ -1,7 +1,9 @@
 {{page-title "Items"}}
-Total Items: {{this.model.length}}
-<div class="flex flex-col">
-  {{#each this.model as |item|}}
-    <LinkTo @route="items.view" @model={{item.id}}>{{item.description}}</LinkTo>
-  {{/each}}
+<div class="flex flex-col space-y-6">
+  <LinkTo @route="items.create" class="button">Add Item</LinkTo>
+  <div>
+    {{#each this.model as |item|}}
+      <LinkTo @route="items.view" class="block" @model={{item.id}}>{{item.description}}</LinkTo>
+    {{/each}}
+  </div>
 </div>

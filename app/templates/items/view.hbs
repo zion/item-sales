@@ -1,31 +1,33 @@
 {{page-title "View"}}
+<div class="flex flex-col space-y-6">
 
-<h2 class="text-2xl">{{this.model.description}}</h2>
-
-<div class="flex">
-
+  <div>
+    <h2 class="text-2xl float-left">{{this.model.description}}</h2>
+    <button {{on "click" (fn this.deleteItem this.model)}} type="button" class="button delete float-right">Delete</button>
+  </div>
+  <div>
+    <h4>Sales Report</h4>
+    <table>
+      <thead>
+        <tr>
+          <th class="w-32 text-left">Week</th>
+          <th class="w-16 text-left">Qty</th>
+          <th class="w-32 text-left">Total Sales</th>
+          <th class="w-32 text-left">Total Cost</th>
+          <th class="w-32 text-left">Profit Margin</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model.daily_item_sale as |sale|}}
+          <tr>
+            <td>{{format-date sale.business_day "MM/DD/YYYY"}}</td>
+            <td>{{sale.total_qty}}</td>
+            <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
+            <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
+            <td>{{format-number (div (sub sale.total_sales sale.total_cost) sale.total_sales) style="percent"}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </div>
-<h4>Sales Report</h4>
-<table>
-  <thead>
-    <tr>
-      <th class="w-32 text-left">Week</th>
-      <th class="w-16 text-left">Qty</th>
-      <th class="w-32 text-left">Total Sales</th>
-      <th class="w-32 text-left">Total Cost</th>
-      <th class="w-32 text-left">Profit Margin</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each this.model.daily_item_sale as |sale|}}
-      <tr>
-        <td>{{format-date sale.business_day "MM/DD/YYYY"}}</td>
-        <td>{{sale.total_qty}}</td>
-        <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
-        <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
-        <td>{{format-number (div (sub sale.total_sales sale.total_cost) sale.total_sales) style="percent"}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-
