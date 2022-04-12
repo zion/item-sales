@@ -5,6 +5,7 @@ export default function () {
   this.get('/items/:id');
   this.post('/items');
   this.put('/items/:id');
+  this.patch('/items/:id');
   this.del('/items/:id');
   this.get('/daily-item-sales');
   this.get('/daily-item-sales/:id');

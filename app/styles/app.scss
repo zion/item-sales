@@ -18,6 +18,10 @@ a.button {
   &.delete {
     background-color: darkred;
   }
+  &.edit {
+    background-color: grey;
+    color: black;
+  }
   &:hover {
     text-decoration: none;
   }

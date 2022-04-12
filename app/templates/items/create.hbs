@@ -3,10 +3,12 @@
   <h2 class="text-2xl">Add Item</h2>
   <div>
     <label for="description" class="block">Description</label>
-    <Input id="description" @value={{this.model.description}}/>
+    <Input id="description" @value={{this.new_item.description}}/>
+    {{#if this.new_item.error.description}}
+      <p class="text-red italic">{{this.new_item.error.description.validation}}</p>
+    {{/if}}
   </div>
   <div>
-    <button type="button" class="button">Add Item</button>
+    <button {{on "click" this.addItem}} type="button" class="button">Add Item</button>
   </div>
-
 </div>
