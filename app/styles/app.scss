@@ -8,6 +8,10 @@ input {
   border: thin solid black;
 }
 
+label {
+  font-weight: bold;
+}
+
 button.button,
 a.button {
   @apply w-32;
@@ -41,6 +45,7 @@ table {
 }
 
 a {
+  color: blue;
   &:hover {
     text-decoration: underline;
   }

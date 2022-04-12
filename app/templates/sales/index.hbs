@@ -16,7 +16,9 @@
     <tbody>
       {{#each this.model.data as |sale|}}
         <tr>
-          <td>{{format-date (get sale.attributes 'business-day') 'MM/DD/YYYY'}}</td>
+          <td>
+            <LinkTo @route="sales.view" @model={{sale.id}}>{{format-date (get sale.attributes 'business-day') 'MM/DD/YYYY'}}</LinkTo>
+          </td>
           <td>[item]</td>
           <td>{{get sale.attributes 'total-qty'}}</td>
           <td>{{get sale.attributes 'total-cost'}}</td>

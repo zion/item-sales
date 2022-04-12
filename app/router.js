@@ -15,5 +15,7 @@ Router.map(function () {
   });
   this.route('sales', function () {
     this.route('create');
+    this.route('view', { path: '/:id' });
+    this.route('edit');
   });
 });

@@ -1,0 +1,28 @@
+{{page-title "Sale"}}
+<div class="flex flex-col space-y-4">
+  <div>
+    <h2 class="text-2xl float-left">Sale</h2>
+    <LinkTo @route="sales.edit" class="button edit float-right">Edit</LinkTo>
+    <button {{on "click" (fn this.deleteSale this.model)}} type="button" class="button delete float-right">Delete</button>
+  </div>
+  <div class="w-64">
+    <label for="quantity" class="block">Quantity</label>
+    <span id="quantity">{{this.model.total_qty}}</span>
+  </div>
+  <div class="w-64">
+    <label for="totalSales" class="block">Total Sales</label>
+    <span id="totalSales">{{format-number this.model.total_sales style="currency" currency="USD"}}</span>
+  </div>
+  <div class="w-64">
+    <label for="businessDay" class="block">Date</label>
+    <span id="businessDay">{{format-date this.model.business_day "MM/DD/YYYY"}}</span>
+  </div>
+  <div class="w-64">
+    <label for="item" class="block">Item sold</label>
+    <span id="item">{{this.model.item.description}}</span>
+  </div>
+  <div class="w-72">
+    <label for="totalCost" class="block">Total Cost</label>
+    <span id="totalCost">{{format-number this.model.total_cost style="currency" currency="USD"}}</span>
+  </div>
+</div>

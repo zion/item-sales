@@ -21,7 +21,7 @@
       <tbody>
         {{#each this.model.daily_item_sale as |sale|}}
           <tr>
-            <td>{{format-date sale.business_day "MM/DD/YYYY"}}</td>
+            <td><LinkTo @route="sales.view" @model={{sale.id}}>{{format-date sale.business_day "MM/DD/YYYY"}}</LinkTo></td>
             <td>{{sale.total_qty}}</td>
             <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
             <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
