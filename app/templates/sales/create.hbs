@@ -1,0 +1,52 @@
+{{page-title "New Sale"}}
+<h2 class="text-2xl">New Sale</h2>
+<div class="flex flex-col space-y-4">
+  <div class="w-64">
+    <label for="quantity" class="block">Quantity</label>
+    <Input id="quantity" @value={{this.new_sale.total_qty}} placeholder="10"/>
+    {{#if this.new_sale.error.total_qty}}
+      <p class="text-red italic">{{this.new_sale.error.total_qty.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <label for="totalSales" class="block">Total Sales</label>
+    <Input id="totalSales" @value={{this.new_sale.total_sales}} placeholder="200"/>
+    {{#if this.new_sale.error.total_sales}}
+      <p class="text-red italic">{{this.new_sale.error.total_sales.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <PowerCalendar
+      @selected={{this.new_sale.business_day}}
+      @onSelect={{this.setDate}} as |calendar|>
+      <calendar.Nav/>
+      <calendar.Days/>
+    </PowerCalendar>
+    {{#if this.new_sale.error.business_day}}
+      <p class="text-red italic">{{this.new_sale.error.business_day.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <label for="item" class="block">Item sold</label>
+    <PowerSelect id="item"
+      @placeholder="Choose..."
+      @selected={{this.new_sale.item}}
+      @options={{this.items}}
+      @onChange={{fn (mut this.new_sale.item)}} as |item|>
+      {{item.description}}
+    </PowerSelect>
+    {{#if this.new_sale.error.business_day}}
+      <p class="text-red italic">{{this.new_sale.error.business_day.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-72">
+    <label for="totalCost" class="block">Total Cost</label>
+    <Input id="totalCost" @value={{this.new_sale.total_cost}} placeholder="100"/> {{#if this.profit_margin}}{{format-number this.profit_margin style="percent"}} profit{{/if}}
+    {{#if this.new_sale.error.total_cost}}
+      <p class="text-red italic">{{this.new_sale.error.total_cost.validation}}</p>
+    {{/if}}
+  </div>
+  <div>
+    <button {{on "click" this.createSale}} type="button" class="button">Add Sale</button>
+  </div>
+</div>
