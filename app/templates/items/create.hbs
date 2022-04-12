@@ -1,2 +1,12 @@
 {{page-title "Create"}}
-{{outlet}}
+<div class="flex flex-col space-y-6">
+  <h2 class="text-2xl">Add Item</h2>
+  <div>
+    <label for="description" class="block">Description</label>
+    <Input id="description" @value={{this.model.description}}/>
+  </div>
+  <div>
+    <button type="button" class="button">Add Item</button>
+  </div>
+
+</div>
