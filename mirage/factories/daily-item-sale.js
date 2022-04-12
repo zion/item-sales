@@ -14,6 +14,6 @@ export default Factory.extend({
     return this.total_qty * price;
   },
   business_day() {
-    return new Date();
+    return faker.date.past();
   },
 });

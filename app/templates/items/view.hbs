@@ -23,7 +23,7 @@
         <td>{{sale.total_qty}}</td>
         <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
         <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
-        <td>%</td>
+        <td>{{format-number (div (sub sale.total_sales sale.total_cost) sale.total_sales) style="percent"}}</td>
       </tr>
     {{/each}}
   </tbody>
