@@ -1,6 +1,6 @@
 export default function () {
   this.logging = true;
-  this.timing = 2000;
+  this.timing = 500;
 
   this.get('/items');
   this.get('/items/:id');
@@ -15,6 +15,12 @@ export default function () {
   this.del('/daily-item-sales/:id');
 
   this.get('/aggregate-sales', (schema, request) => {
-    return { message: 'hello' };
+    let sales = schema.db.dailyItemSales;
+    sales = sales.map((sale) => {
+      let item = schema.items.find(sale.itemId);
+      sale['item_description'] = item.description;
+      return sale;
+    });
+    return sales;
   });
 }

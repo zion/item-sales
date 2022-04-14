@@ -3,7 +3,7 @@ import fetch from 'fetch';
 
 export default class SalesIndexRoute extends Route {
   model() {
-    return fetch('/daily-item-sales').then((response) => {
+    return fetch('/aggregate-sales').then((response) => {
       return response.json();
     });
   }
