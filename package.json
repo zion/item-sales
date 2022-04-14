@@ -33,6 +33,7 @@
     "autoprefixer": "^10.4.4",
     "babel-eslint": "^8.2.6",
     "broccoli-asset-rev": "^3.0.0",
+    "dayjs": "^1.11.0",
     "ember-auto-import": "^1.11.3",
     "ember-changeset": "^3.15.0",
     "ember-changeset-validations": "^3.16.0",
@@ -47,6 +48,7 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-data": "~3.28.0",
+    "ember-dayjs": "^0.6.0",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
     "ember-intl": "^5.7.2",
@@ -82,5 +84,6 @@
   },
   "ember": {
     "edition": "octane"
-  }
+  },
+  "dependencies": {}
 }
