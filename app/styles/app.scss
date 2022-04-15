@@ -66,3 +66,15 @@ a {
     color: gold;
   }
 }
+
+.profit-margin {
+  &.low {
+    color: darkred;
+  }
+  &.mid {
+    color: darkorange;
+  }
+  &.high {
+    color: darkgreen;
+  }
+}
