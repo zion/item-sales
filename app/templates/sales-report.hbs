@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each (sort-by "business_date:asc" this.sales) as |sale|}}
+      {{#each (sort-by "business_date" this.sales) as |sale|}}
         <tr>
           <td>{{format-date sale.business_date 'MM/DD/YYYY'}}</td>
           <td>{{format-number sale.total_qty}}</td>
