@@ -78,3 +78,15 @@ a {
     color: darkgreen;
   }
 }
+
+.ember-power-calendar {
+  .ember-power-calendar-weekdays {
+    background-color: darkgray;
+  }
+  .ember-power-calendar-day {
+    border: thin solid black;
+    &.ember-power-calendar-day--selected {
+      background-color: aquamarine;
+    }
+  }
+}
