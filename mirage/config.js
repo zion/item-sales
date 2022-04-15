@@ -18,15 +18,6 @@ export default function () {
 
   this.get('/aggregate-sales', (schema, request) => {
     let sales = schema.db.dailyItemSales;
-    sales = sales.map((sale) => {
-      let item = schema.items.find(sale.itemId);
-      sale['item_description'] = item.description;
-      return sale;
-    });
-
-    let sorted_sales = sales.sort((a, b) => {
-      return dayjs(b.business_date).toDate() - dayjs(a.business_date).toDate();
-    });
-    return sorted_sales;
+    return sales;
   });
 }
