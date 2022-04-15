@@ -6,7 +6,6 @@
     <thead>
       <tr>
         <th>Date</th>
-        <th>Item</th>
         <th>Quantity</th>
         <th>Cost</th>
         <th>Sales</th>
@@ -14,16 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      {{#each this.sales as |sale|}}
+      {{#each (sort-by "business_date:asc" this.sales) as |sale|}}
         <tr>
-          <td>
-            <LinkTo @route="sales.view" @model={{sale.id}}>{{format-date sale.business_day 'MM/DD/YYYY'}}</LinkTo>
-          </td>
-          <td>{{sale.item_description}}</td>
+          <td>{{format-date sale.business_date 'MM/DD/YYYY'}}</td>
           <td>{{format-number sale.total_qty}}</td>
           <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
           <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
-          <td>%</td>
+          <td><ProfitMargin @sales={{sale.total_sales}} @cost={{sale.total_cost}} /></td>
         </tr>
       {{/each}}
     </tbody>

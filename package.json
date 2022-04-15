@@ -47,6 +47,7 @@
     "ember-cli-postcss": "^8.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
+    "ember-composable-helpers": "^5.0.0",
     "ember-data": "~3.28.0",
     "ember-dayjs": "^0.6.0",
     "ember-export-application-global": "^2.0.1",
@@ -84,6 +85,5 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {}
+  }
 }

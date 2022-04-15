@@ -1,35 +1,30 @@
 import Controller from '@ember/controller';
 import dayjs from 'dayjs';
 import WeekOfYear from 'dayjs/plugin/weekOfYear';
-import { inject as service } from '@ember/service';
 
 export default class SalesIndexController extends Controller {
-  @service intl;
   get sales() {
     let sales_by_week = {};
     this.model.map((sale) => {
       dayjs.extend(WeekOfYear);
-      const woy = dayjs(sale.business_day).week().toString();
-      const y = dayjs(sale.business_day).year();
-      // debugger
-      if (sales_by_week[y] === undefined) {
-        // Add year to array
-        sales_by_week[y] = {};
+      const dow = dayjs(sale.business_day).startOf('w').$d;
+      const date = dayjs(dow).format('MM/DD/YYYY');
+      // if first day of week is not in object, create with first sale
+      // else add values
+      if (sales_by_week[date]) {
+        sales_by_week[date]['total_qty'] += sale.total_qty;
+        sales_by_week[date]['total_sales'] += sale.total_sales;
+        sales_by_week[date]['total_cost'] += sale.total_cost;
+      } else {
+        sales_by_week[date] = {
+          business_date: date,
+          total_sales: sale.total_sales,
+          total_cost: sale.total_cost,
+          total_qty: sale.total_qty,
+        };
       }
-
-      // if (sales_by_week[y][woy] === undefined) {
-
-      // }
-      // add week to array
-
-      // debugger
-      // sales_by_week[y][woy] = {
-      //   business_week: dayjs(sale.business_day).startOf('w').$d,
-      //   total_sales: sale.total_sales,
-      //   total_cost: sale.total_cost,
-      // };
     });
-    debugger
-    return sales_by_week;
+    let arr = Object.keys(sales_by_week).map((k) => sales_by_week[k]);
+    return arr;
   }
 }

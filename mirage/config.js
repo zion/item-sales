@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export default function () {
   this.logging = true;
   this.timing = 500;
@@ -21,6 +23,10 @@ export default function () {
       sale['item_description'] = item.description;
       return sale;
     });
-    return sales;
+
+    let sorted_sales = sales.sort((a, b) => {
+      return dayjs(b.business_date).toDate() - dayjs(a.business_date).toDate();
+    });
+    return sorted_sales;
   });
 }
