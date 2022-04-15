@@ -16,7 +16,7 @@ Router.map(function () {
   this.route('sales', function () {
     this.route('create');
     this.route('view', { path: '/:id' });
-    this.route('edit');
+    this.route('edit', { path: '/:id/edit' });
   });
   this.route('sales-report');
 });

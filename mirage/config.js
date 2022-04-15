@@ -14,6 +14,7 @@ export default function () {
   this.get('/daily-item-sales/:id');
   this.post('/daily-item-sales');
   this.put('/daily-item-sales/:id');
+  this.patch('/daily-item-sales/:id');
   this.del('/daily-item-sales/:id');
 
   this.get('/aggregate-sales', (schema, request) => {

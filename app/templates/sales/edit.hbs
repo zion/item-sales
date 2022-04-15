@@ -1,2 +1,52 @@
-{{page-title "Edit"}}
-{{outlet}}
+{{page-title "Edit Sale"}}
+<h2 class="text-2xl">Edit Sale</h2>
+<div class="flex flex-col space-y-4">
+  <div class="w-64">
+    <label for="quantity" class="block">Quantity</label>
+    <Input id="quantity" @value={{this.sale.total_qty}} placeholder="10"/>
+    {{#if this.sale.error.total_qty}}
+      <p class="text-red italic">{{this.sale.error.total_qty.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <label for="totalSales" class="block">Total Sales</label>
+    <Input id="totalSales" @value={{this.sale.total_sales}} placeholder="200"/>
+    {{#if this.sale.error.total_sales}}
+      <p class="text-red italic">{{this.sale.error.total_sales.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <PowerCalendar
+      @selected={{this.sale.business_day}}
+      @onSelect={{this.setDate}} as |calendar|>
+      <calendar.Nav/>
+      <calendar.Days/>
+    </PowerCalendar>
+    {{#if this.sale.error.business_day}}
+      <p class="text-red italic">{{this.sale.error.business_day.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-64">
+    <label for="item" class="block">Item sold</label>
+    <PowerSelect id="item"
+      @placeholder="Choose..."
+      @selected={{this.sale.item}}
+      @options={{this.items}}
+      @onChange={{fn (mut this.sale.item)}} as |item|>
+      {{item.description}}
+    </PowerSelect>
+    {{#if this.sale.error.business_day}}
+      <p class="text-red italic">{{this.sale.error.business_day.validation}}</p>
+    {{/if}}
+  </div>
+  <div class="w-72">
+    <label for="totalCost" class="block">Total Cost</label>
+    <Input id="totalCost" @value={{this.sale.total_cost}} placeholder="100"/> {{#if this.profit_margin}}{{format-number this.profit_margin style="percent"}} profit{{/if}}
+    {{#if this.sale.error.total_cost}}
+      <p class="text-red italic">{{this.sale.error.total_cost.validation}}</p>
+    {{/if}}
+  </div>
+  <div>
+    <button {{on "click" this.updateSale}} type="button" class="button">Update Sale</button>
+  </div>
+</div>
