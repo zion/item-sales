@@ -36,7 +36,10 @@ export default class ItemsViewController extends Controller {
         }
       });
       let arr = Object.keys(sales_by_week).map((k) => sales_by_week[k]);
-      return arr;
+      let sorted_arr = arr.sort((a, b) => {
+        return dayjs(b.business_date).$d - dayjs(a.business_date).$d;
+      });
+      return sorted_arr;
     }
   }
 }
