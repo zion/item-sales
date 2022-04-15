@@ -18,4 +18,5 @@ Router.map(function () {
     this.route('view', { path: '/:id' });
     this.route('edit');
   });
+  this.route('sales-report');
 });
