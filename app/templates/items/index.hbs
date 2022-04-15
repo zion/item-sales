@@ -1,9 +1,23 @@
 {{page-title "Items"}}
 <div class="flex flex-col space-y-6">
   <LinkTo @route="items.create" class="button">Add Item</LinkTo>
-  <div class="w-64">
-    {{#each this.model as |item|}}
-      <LinkTo @route="items.view" class="block" @model={{item.id}}>{{item.description}}</LinkTo>
+  <div class="">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model as |item|}}
+          <tr>
+            <td>{{item.id}}</td>
+            <td><LinkTo @route="items.view" class="block" @model={{item.id}}>{{item.description}}</LinkTo></td>
+          </tr>
     {{/each}}
+
+      </tbody>
+    </table>
   </div>
 </div>

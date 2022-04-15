@@ -4,6 +4,13 @@
 
 @import "ember-power-calendar";
 
+nav {
+  background-color:slategray;
+  a {
+    color: white;
+  }
+}
+
 input {
   border: thin solid black;
 }
@@ -16,11 +23,11 @@ button.button,
 a.button {
   @apply w-32;
   text-align: center;
-  background-color: darkolivegreen;
+  background-color:mediumseagreen;
   color: white;
   padding: 8px;
   &.delete {
-    background-color: darkred;
+    background-color: tomato;
   }
   &.edit {
     background-color: grey;
