@@ -10,7 +10,7 @@ export default class ItemsEditController extends Controller {
     this.item.validate().then(() => {
       if (this.item.get('isValid')) {
         this.item.save().then(() => {
-          this.router.transitionTo('items.view', this.item);
+          this.router.transitionTo('items.view', this.item.id);
         });
       }
     });
