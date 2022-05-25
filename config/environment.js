@@ -62,6 +62,7 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.APP.HOST_URL = 'https://item-sales-api.herokuapp.com';
   }
 
   return ENV;
