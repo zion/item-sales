@@ -4,21 +4,21 @@
   <table>
     <thead>
       <tr>
-        <th>Date</th>
-        <th>Quantity</th>
-        <th>Cost</th>
-        <th>Sales</th>
+        <th {{on "click" (fn this.changeSortColumn 'business_week')}}>Date</th>
+        <th {{on "click" (fn this.changeSortColumn 'total_qty')}}>Quantity</th>
+        <th {{on "click" (fn this.changeSortColumn 'total_cost')}}>Cost</th>
+        <th {{on "click" (fn this.changeSortColumn 'total_sales')}}>Sales</th>
         <th>Profit Margin</th>
       </tr>
     </thead>
     <tbody>
-      {{#each this.sales as |sale|}}
+      {{#each this.model.data as |sale|}}
         <tr>
-          <td>{{format-date sale.business_date 'MM/DD/YYYY'}}</td>
-          <td>{{format-number sale.total_qty}}</td>
-          <td>{{format-number sale.total_cost style="currency" currency="USD"}}</td>
-          <td>{{format-number sale.total_sales style="currency" currency="USD"}}</td>
-          <td><ProfitMargin @sales={{sale.total_sales}} @cost={{sale.total_cost}} /></td>
+          <td>{{format-date sale.attributes.business_week 'MM/DD/YYYY'}}</td>
+          <td>{{format-number sale.attributes.total_qty}}</td>
+          <td>{{format-number sale.attributes.total_cost style="currency" currency="USD"}}</td>
+          <td>{{format-number sale.attributes.total_sales style="currency" currency="USD"}}</td>
+          <td><ProfitMargin @sales={{sale.attributes.total_sales}} @cost={{sale.attributes.total_cost}} /></td>
         </tr>
       {{/each}}
     </tbody>
