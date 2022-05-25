@@ -7,7 +7,9 @@ export default class ItemsCreateController extends Controller {
     let new_item = this.new_item;
     new_item.validate().then(() => {
       if (new_item.get('isValid')) {
-        new_item.save();
+        new_item.save().then(() => {
+          this.transitionToRoute('items.index');
+        });
       }
     });
   }
