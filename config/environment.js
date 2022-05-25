@@ -45,7 +45,8 @@ module.exports = function (environment) {
       enabled: false,
     };
     // ENV.APP.HOST_URL = 'http://localhost:5249';
-    ENV.APP.HOST_URL = 'http://localhost:3000';
+    // ENV.APP.HOST_URL = 'http://localhost:3000';
+    ENV.APP.HOST_URL = 'https://item-sales-api.herokuapp.com';
   }
 
   if (environment === 'test') {
