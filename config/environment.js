@@ -21,7 +21,19 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    contentSecurityPolicy: {
+      'default-src': "'self'",
+      'connect-src': "'self'",
+      'script-src': "'self' 'unsafe-inline' http://www.browser-update.org",
+      'img-src': "'self' http://www.browser-update.org",
+    },
   };
+
+  if (environment === 'local') {
+    ENV['ember-cli-mirage'] = {
+      enabled: true,
+    };
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -30,8 +42,10 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['ember-cli-mirage'] = {
-      enabled: true,
+      enabled: false,
     };
+    // ENV.APP.HOST_URL = 'http://localhost:5249';
+    ENV.APP.HOST_URL = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
